@@ -16,4 +16,4 @@ WORKDIR /app
 # copy over the built artifact from the maven image
 COPY --from=maven /app/eureka.jar ./eureka.jar
 # set the startup command to run your binary
-CMD ["java", "-jar", "/app/eureka.jar"]
+CMD ["java", "-Dspring.profiles.active=${SPRING_PROFILE},server.port=${SERVER_PORT}", "-jar", "/app/eureka.jar"]
